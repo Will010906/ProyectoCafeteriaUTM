@@ -127,12 +127,23 @@ public void registrarPedidoCliente(){
 
     //Declaración de variables locales
 byte elemento;
-byte totalComidas, totalbebidas, totalBebidas, numPedido = 0;
-short idCliente, existenciasPedido;
-int cantidad, totalCantidadComidas, totalCantidadBebidas totalItems = 0;
-double totalPrecioComida, totalPrecioBebida, subtotal, descuento, totalPagar = 0;
+byte totalComidas = 0;
+byte totalbebidas = 0;
+byte totalBebidas = 0;
+byte numPedido = 0;
+short idCliente = 0 ;
+short existenciasPedido = 0;
+int cantidad = 0;
+int totalCantidadComidas = 0;
+int totalCantidadBebidas = 0;
+int totalItems = 0;
+double totalPrecioComida = 0;
+double totalPrecioBebida =0;
+double subtotal = 0;
+double descuento = 0;
+double totalPagar = 0;
 boolean insertar = false;
-String respuesta = 0;
+String respuesta = "si";
 Pedido pedido = null;
 Cliente cliente = null;
 Comida comida;
@@ -145,10 +156,10 @@ String hora = now.format(DateTimeFormatter.ofPattern("HH:mm"));
 
 // Selección de clientes
 System.out.println("------------------------------- Clientes registrados -------------------------------");
-mostrarObjetosClientes();
+mostrarObjetosCliente();
 System.out.print("Selecciona el cliente que hara el pedido: ");
 idCliente = teclado.nextShort();
-cliente = buscarClientePorld(idCliente);
+cliente = buscarClientePorId(idCliente);
 
 if (cliente == null){
     System.out.println("Cliente no registrado");
@@ -171,6 +182,7 @@ consultarProductosComida();
 
 totalCantidadComidas = 0;
 totalPrecioComida = 0;
+
     do {
         if (comida.getExistencias()== 0) {
             System.out.println("Existencias insuficientes, elige otra comida.");
@@ -178,7 +190,7 @@ totalPrecioComida = 0;
         } else {
             System.out.println("Cantidad de " + comida.getNombre() + "quieres comprar?");
             cantidad = teclado.nextByte();
-            existenciasPedido = (short)(arregloMenuComida.get(elemento).getExistencias();
+            existenciasPedido = (short)(arregloMenuComida.get(elemento).getExistencias());
             
             if (existenciasPedido < cantidad) {
                 System.out.println("No hay existencias suficientes, solo tenemos en existencia " + existenciasPedido);
@@ -189,9 +201,23 @@ totalPrecioComida = 0;
             
         }
         
-    } while (cantida > existenciasPedido);
-    if(insertar)
-}}
+    } while (cantidad > existenciasPedido);
+    if(insertar){
+        existenciasPedido = (short)(existenciasPedido - cantidad);
+        arregloMenuComida.get(elemento).setExistencias(existenciasPedido);
+        
+ //Agregando a los arreglos de pedido de comida y cantidad
+ pedido.productosPedidosComida.add(comida);
+ pedido.productosCantidadPedidosComida.add(cantidad);
+ 
+ //Calculando el total por el numero de unidades
+ totalCantidadComidas = totalCantidadComidas + cantidad;
+} while (respuesta.=);
+
+
+
+
+}
 
 
 
