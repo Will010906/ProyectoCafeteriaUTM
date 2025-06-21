@@ -72,7 +72,7 @@ static int idPedido = 0;
  public void registrarProductosBebida(){
      System.out.println("Se registran los productos de bebida en el inventario");
      Bebida bebida1 = new Bebida ("C01", "Agua",  (float) 20, (short)30, (float) 500, "Jamaica", "Fría");
-     Bebida bebida2= new Bebida ("C02", "Refresco",  (float) 20, (short)20, (float) 600, "ColaCola", "Fría");
+     Bebida bebida2= new Bebida ("C02", "Refresco",  (float) 20, (short)20, (float) 600, "CocaCola", "Fría");
      Bebida bebida3 = new Bebida ("C03", "Cafe",  (float) 15, (short)15, (float) 355, "Cafe de olla", "Caliente");
      arregloMenuBebida.add(bebida1);
      arregloMenuBebida.add(bebida2);
@@ -212,7 +212,14 @@ totalPrecioComida = 0;
  
  //Calculando el total por el numero de unidades
  totalCantidadComidas = totalCantidadComidas + cantidad;
-} while (respuesta.=);
+ totalPrecioComida = totalPrecioComida + comida.getPrecio() * cantidad;
+ System.out.println("Precio" + comida.getPrecio() + " x " + cantidad + "=$" + comida.getPrecio() * cantidad);
+}
+    System.out.println("Desea agregar otra comida (s/n)? : ");
+    teclado.nextLine();
+    insertar = false;
+    respuesta = teclado.nextLine();
+} while (respuesta.
 
 
 
