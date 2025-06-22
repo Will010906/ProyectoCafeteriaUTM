@@ -5,14 +5,14 @@ package com.mycompany.cafeteriautm;
  * @author alcan
  */
 public class Cliente {
+
     //Zona de declaración de atributos:
     private int idCliente;
     private String nombre;
     private boolean beca;
     private float porcentaje;
-    
-    //Constructor
 
+    //Constructor
     public Cliente(int idCliente, String nombre, boolean beca, float porcentaje) {
         this.idCliente = idCliente;
         this.nombre = nombre;
@@ -53,12 +53,10 @@ public class Cliente {
     }
 
     void mostrarDatosCliente() {
-        System.out.println("Cve" + this.idCliente 
-                + "- Nombre:" + this.getNombre() 
-                + "- Beca" + this.beca 
+        System.out.println("Cve" + this.idCliente
+                + "- Nombre:" + this.getNombre()
+                + "- Beca" + this.beca
                 + "- % beca:" + this.porcentaje);
     }
-  
-    }
-    
 
+}

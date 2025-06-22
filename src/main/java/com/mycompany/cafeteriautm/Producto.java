@@ -18,6 +18,22 @@ public class Producto {
         this.categoria = categoria;
         this.existencias = existencias;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public float getPrecio() {
+        return precio;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public short getExistencias() {
+        return existencias;
+    }
     
  }
     

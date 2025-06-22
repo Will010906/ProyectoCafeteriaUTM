@@ -11,8 +11,10 @@ public class Pedido {
     String fecha;
     String hora;
     Cliente idCliente;
+    float descuento;
     int totalProductos;
     float subtotal;
+    float total;
     
     //Declaración de ARRAYS
     ArrayList<Comida>productosPedidosComida = new ArrayList<>();
@@ -85,6 +87,27 @@ public class Pedido {
     public void setTotalProductos(int totalProductos) {
         this.totalProductos = totalProductos;
     }
+
+    public float getDescuento() {
+        return descuento;
+    }
+
+    public void setDescuento(float descuento) {
+        this.descuento = descuento;
+    }
+
+    public float getTotal() {
+        return total;
+    }
+
+    public void setTotal(float total) {
+        this.total = total;
+    }
+
+    void mostrarPedidoFinal() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
     
     
   

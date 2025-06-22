@@ -11,7 +11,7 @@ public class Bebida extends Producto {
     private String sabor;
     private String temperatura;
     
-    public Bebida(String nombre, String categoria, float precio, short existencias, float volumen, String tipo, String sabor){
+    public Bebida(String nombre, String categoria, float precio, short existencias, float volumen, String temperatura, String sabor){
         //Herencia
         super(nombre, (float) precio, categoria, existencias);
         this.volumen= volumen;
@@ -49,6 +49,46 @@ public class Bebida extends Producto {
 
     public void setIdBebida(int idBebida) {
         this.idBebida = idBebida;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public float getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(float precio) {
+        this.precio = precio;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public short getExistencias() {
+        return existencias;
+    }
+
+    public void setExistencias(short existencias) {
+        this.existencias = existencias;
+    }
+    public void mostrarDatosBebida(){
+        System.out.println("Nombre:" + this.getNombre()
+                + "- Precio: " + this.getPrecio()
+                + "- Sabor: " + this.getSabor()
+                + "- Volumen: " + this.getVolumen()
+                + "- Temperatura: "+ this.getTemperatura()
+                + "- Existencias: " + this.getExistencias());
     }
     
 }

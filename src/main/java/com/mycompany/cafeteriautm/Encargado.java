@@ -6,11 +6,12 @@ package com.mycompany.cafeteriautm;
  */
 public class Encargado {
 
-    public Encargado(int par, String saul, String matutino) {
+    public Encargado(int idEncargado, String nombre, String turno) {
     }
     private int idEncargado;
     private String nombre;
     private String turno;
+    
 
     public int getIdEncargado() {
         return idEncargado;
