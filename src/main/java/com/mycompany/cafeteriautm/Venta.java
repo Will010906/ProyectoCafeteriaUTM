@@ -16,15 +16,17 @@ public class Venta {
     private Cliente idCliente;
     private Encargado idEncargado;
     //Declaración de ARRAY:
-    ArrayList<Producto>Producto = new ArrayList<>();
+    ArrayList<Producto>producto = new ArrayList<>();
 
-    public Venta(int idVenta, String fecha, String hora, float total, float subtotal, float descuentoBeca) {
+    public Venta(int idVenta, String fecha, String hora, float total, float subtotal, float descuentoBeca, Cliente idCliente, Encargado idEncargado) {
         this.idVenta = idVenta;
         this.fecha = fecha;
         this.hora = hora;
         this.total = total;
         this.subtotal = subtotal;
         this.descuentoBeca = descuentoBeca;
+        this.idCliente = idCliente;
+        this.idEncargado = idEncargado;
     }
 
     public int getIdVenta() {
