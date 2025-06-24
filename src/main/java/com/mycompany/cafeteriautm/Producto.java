@@ -34,7 +34,9 @@ public class Producto {
     public short getExistencias() {
         return existencias;
     }
-    
+    public void setExistencias(short existencias) {
+        this.existencias = existencias;
  }
-    //
+}
+    
 

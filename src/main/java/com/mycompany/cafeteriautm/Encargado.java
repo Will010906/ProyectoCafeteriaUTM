@@ -1,25 +1,20 @@
 package com.mycompany.cafeteriautm;
 
-/**
- *
- * @author alcan
- */
 public class Encargado {
-  private int idEncargado;
+
+    // Atributos
+    private int idEncargado;
     private String nombre;
     private String turno;
 
+    // Constructor
     public Encargado(int idEncargado, String nombre, String turno) {
         this.idEncargado = idEncargado;
         this.nombre = nombre;
         this.turno = turno;
     }
-    
-        
-  
-    
-        
 
+    // Getters y Setters
     public int getIdEncargado() {
         return idEncargado;
     }
@@ -44,10 +39,10 @@ public class Encargado {
         this.turno = turno;
     }
 
-   public void mostrarDatosEmpleado() {
-        System.out.println("Cve: " + this.getIdEncargado()
-                + "- Nombre: " + this.getNombre() 
-                + "- Turno:" + this.getTurno());
+    // Método para mostrar la información del encargado
+    public void mostrarDatosEmpleado() {
+        System.out.println("Cve: " + idEncargado
+                + " - Nombre: " + nombre
+                + " - Turno: " + turno);
     }
-    
 }

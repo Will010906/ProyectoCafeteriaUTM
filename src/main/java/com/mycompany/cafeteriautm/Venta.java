@@ -1,35 +1,35 @@
 package com.mycompany.cafeteriautm;
 
-/**
- *
- * @author alcan
- */
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class Venta {
 
-    //Zona de declaración de atributos:
+    // Atributos
+    private static int contadorVentas = 1;
     private int idVenta;
     private String fecha;
     private String hora;
     private float total;
     private float subtotal;
     private float descuentoBeca;
-    private Cliente idCliente;
-    private Encargado idEncargado;
-    private Pedido pedido;
-    //Declaración de ARRAY:
+    private int idCliente;
+    private int idPedido;
 
-    public Venta(float total, Cliente idCliente, Pedido pedido) {
-        this.idVenta = idVenta;
-        this.fecha = fecha;
-        this.hora = hora;
+    // Constructor
+    public Venta(float total, int idCliente, int idPedido) {
+        this.idVenta = contadorVentas ++;
         this.total = total;
-        this.subtotal = subtotal;
-        this.descuentoBeca = descuentoBeca;
         this.idCliente = idCliente;
-        this.idEncargado = idEncargado;
-        this.pedido = pedido;
+        this.idPedido = idPedido;
+
+        // Asignación automática de fecha y hora al momento de crear la venta
+        LocalDateTime now = LocalDateTime.now();
+        this.fecha = now.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        this.hora = now.format(DateTimeFormatter.ofPattern("HH:mm"));
     }
 
+    // Getters y Setters
     public int getIdVenta() {
         return idVenta;
     }
@@ -42,16 +42,8 @@ public class Venta {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
-    }
-
     public String getHora() {
         return hora;
-    }
-
-    public void setHora(String hora) {
-        this.hora = hora;
     }
 
     public float getTotal() {
@@ -78,38 +70,28 @@ public class Venta {
         this.descuentoBeca = descuentoBeca;
     }
 
-    public Cliente getIdCliente() {
+    public int getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(Cliente idCliente) {
-        this.idCliente = idCliente;
+    public int getIdPedido() {
+        return idPedido;
+    }
+    @Override
+    public String toString() {
+        return "Venta ID: " + idVenta + " - Pedido: " + idPedido + " - Cliente ID: " + idCliente +
+               " - Fecha: " + fecha + " - Hora: " + hora + " - Total: $" + total;
     }
 
-    public Encargado getIdEncargado() {
-        return idEncargado;
-    }
-
-    public void setIdEncargado(Encargado idEncargado) {
-        this.idEncargado = idEncargado;
-    }
-
-    public Pedido getPedido() {
-        return pedido;
-    }
-
-    public void setPedido(Pedido pedido) {
-        this.pedido = pedido;
-    }
-
+    // Método para mostrar la información de la venta
     public void mostrarVenta() {
-        System.out.println("Cve: " + this.idVenta
-                + "- Encargado de la venta: " + this.idEncargado.getNombre()
-                + "- Nombre: " + this.idCliente.getNombre()
-                + "- Fecha: " + this.fecha
-                + "- Hora:" + this.hora
-                + "- Descuento Beca: " + this.descuentoBeca
-                + "- Subtotal: " + this.subtotal
-                + "- Total: " + this.total);     
+        System.out.println("----- Venta -----");
+        System.out.println("ID Venta: " + idVenta);
+        System.out.println("Fecha: " + fecha + " - Hora: " + hora);
+        System.out.println("ID Cliente: " + idCliente);
+        System.out.println("ID Pedido: " + idPedido);
+        System.out.println("Subtotal: $" + subtotal);
+        System.out.println("Descuento: $" + descuentoBeca);
+        System.out.println("Total a pagar: $" + total);
     }
 }

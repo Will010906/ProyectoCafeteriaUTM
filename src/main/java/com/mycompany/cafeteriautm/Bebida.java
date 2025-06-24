@@ -1,23 +1,28 @@
 package com.mycompany.cafeteriautm;
 
-/**
- *
- * @author alcan
- */
 public class Bebida extends Producto {
 
-    //Zona de declaración de atributos:
+    // Atributos propios de Bebida
     private int idBebida;
     private float volumen;
     private String sabor;
     private String temperatura;
 
-    public Bebida(String nombre, String categoria, float precio, short existencias, float volumen, String temperatura, String sabor) {
-        //Herencia
-        super(nombre, (float) precio, categoria, existencias);
+    // Constructor
+    public Bebida(String nombre, String categoria, float precio, short existencias, float volumen, String sabor, String temperatura) {
+        super(nombre, precio, categoria, existencias);
         this.volumen = volumen;
         this.sabor = sabor;
         this.temperatura = temperatura;
+    }
+
+    // Getters y Setters
+    public int getIdBebida() {
+        return idBebida;
+    }
+
+    public void setIdBebida(int idBebida) {
+        this.idBebida = idBebida;
     }
 
     public float getVolumen() {
@@ -43,59 +48,21 @@ public class Bebida extends Producto {
     public void setTemperatura(String temperatura) {
         this.temperatura = temperatura;
     }
+    
 
-    public int getIdBebida() {
-        return idBebida;
-    }
-
-    public void setIdBebida(int idBebida) {
-        this.idBebida = idBebida;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public float getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(float precio) {
-        this.precio = precio;
-    }
-
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
-
-    public short getExistencias() {
-        return existencias;
-    }
-
-    public void setExistencias(short existencias) {
-        this.existencias = existencias;
-    }
-
+    // Métodos para mostrar información
     public void mostrarDatosBebida() {
-        System.out.println("Nombre:" + this.getNombre()
-                + "- Precio: " + this.getPrecio()
-                + "- Sabor: " + this.getSabor()
-                + "- Volumen: " + this.getVolumen()
-                + "- Temperatura: " + this.getTemperatura()
-                + "- Existencias: " + this.getExistencias());
+        System.out.println("Nombre: " + getNombre()
+                + " - Precio: " + getPrecio()
+                + " - Sabor: " + sabor
+                + " - Volumen: " + volumen + " ml"
+                + " - Temperatura: " + temperatura
+                + " - Existencias: " + getExistencias());
     }
 
-    public void mostrarResumenDatosbebida() {
-        System.out.println("Nombre:" + this.getNombre()
-                + "- Precio: " + this.getPrecio()
-                + "- Sabor: " + this.getSabor());
+    public void mostrarResumenDatosBebida() {
+        System.out.println("Nombre: " + getNombre()
+                + " - Precio: " + getPrecio()
+                + " - Sabor: " + sabor);
     }
 }

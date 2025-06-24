@@ -2,52 +2,43 @@ package com.mycompany.cafeteriautm;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author alcan
- */
 public class Pedido {
 
-    //Zona de declaración de atributos:
-    Pedido idPedido;
-    String fecha;
-    String hora;
-    Cliente idCliente;
-    float descuento;
-    int totalProductos;
-    float subtotal;
-    float total;
+    // Atributos
+    private int idPedido;
+    private String fecha;
+    private String hora;
+    private Cliente idCliente;
+    private float descuento;
+    private int totalProductos;
+    private float subtotal;
+    private float total;
 
-    //Declaración de ARRAYS
-    ArrayList<Comida> productosPedidosComida = new ArrayList<>();
-    ArrayList<Integer> productosCantidadPedidosComida = new ArrayList<>();
-    ArrayList<Bebida> productosPedidosBebida = new ArrayList<>();
-    ArrayList<Integer> productosCantidadPedidosBebida = new ArrayList<>();
+    // Listas para los productos
+private ArrayList<Comida> productosPedidosComida = new ArrayList<>();
+private ArrayList<Integer> productosCantidadPedidosComida = new ArrayList<>();
+private ArrayList<Bebida> productosPedidosBebida = new ArrayList<>();
+private ArrayList<Integer> productosCantidadPedidosBebida = new ArrayList<>();
 
-    //Constructor
-    public Pedido(Pedido idPedido, String fecha, String hora, Cliente idCliente, int totalProductos, float subtotal) {
-        this.idPedido = idPedido;
-        this.fecha = fecha;
-        this.hora = hora;
-        this.idCliente = idCliente;
-        this.totalProductos = totalProductos;
-        this.subtotal = subtotal;
-    }
 
+    // Constructor vacío
     public Pedido() {
-        this.idPedido = null;
+        this.idPedido = 0;
         this.fecha = "";
         this.hora = "";
         this.idCliente = null;
         this.totalProductos = 0;
         this.subtotal = 0;
+        this.descuento = 0;
+        this.total = 0;
     }
 
-    public Pedido getIdPedido() {
+    // Getters y Setters correctos
+    public int getIdPedido() {
         return idPedido;
     }
 
-    public void setIdPedido(Pedido idPedido) {
+    public void setIdPedido(int idPedido) {
         this.idPedido = idPedido;
     }
 
@@ -67,28 +58,12 @@ public class Pedido {
         this.hora = hora;
     }
 
-    public float getSubtotal() {
-        return subtotal;
-    }
-
-    public void setSubtotal(float subtotal) {
-        this.subtotal = subtotal;
-    }
-
     public Cliente getIdCliente() {
         return idCliente;
     }
 
     public void setIdCliente(Cliente idCliente) {
         this.idCliente = idCliente;
-    }
-
-    public int getTotalProductos() {
-        return totalProductos;
-    }
-
-    public void setTotalProductos(int totalProductos) {
-        this.totalProductos = totalProductos;
     }
 
     public float getDescuento() {
@@ -99,6 +74,22 @@ public class Pedido {
         this.descuento = descuento;
     }
 
+    public int getTotalProductos() {
+        return totalProductos;
+    }
+
+    public void setTotalProductos(int totalProductos) {
+        this.totalProductos = totalProductos;
+    }
+
+    public float getSubtotal() {
+        return subtotal;
+    }
+
+    public void setSubtotal(float subtotal) {
+        this.subtotal = subtotal;
+    }
+
     public float getTotal() {
         return total;
     }
@@ -106,19 +97,40 @@ public class Pedido {
     public void setTotal(float total) {
         this.total = total;
     }
-    public void mostrarPedido() {
-                      System.out.println("Cve" + this.idPedido 
-                + "- Fecha:" + this.fecha
-                + "- Hora: " + this.hora
-                + "- Cliente: " + this.idCliente.getNombre());
-    }
-    public void mostrarPedidoFinal() {
-        System.out.println("Cve: " + this.idPedido
-                + "- Fecha:" + this.fecha
-                + "- Hora: " + this.hora
-                + "- Cliente: " + this.idCliente.getNombre()
-                + "- No. productos:" + this.totalProductos
-                + "- total venta: " + this.getSubtotal());
+    public void agregarProductoComida(Comida comida, int cantidad) {
+        productosPedidosComida.add(comida);
+        productosCantidadPedidosComida.add(cantidad);
     }
 
+    public void agregarProductoBebida(Bebida bebida, int cantidad) {
+        productosPedidosBebida.add(bebida);
+        productosCantidadPedidosBebida.add(cantidad);
+    }
+
+ // Métodos para mostrar la información del pedido
+    public void mostrarPedido() {
+        System.out.println("Cve Pedido: " + this.idPedido 
+            + " - Fecha: " + this.fecha
+            + " - Hora: " + this.hora
+            + " - Cliente: " + this.idCliente.getNombre());
+    }
+
+    public void mostrarPedidoFinal() {
+        System.out.println("----- Resumen del Pedido -----");
+        System.out.println("Cve Pedido: " + this.idPedido
+            + " - Fecha: " + this.fecha
+            + " - Hora: " + this.hora
+            + " - Cliente: " + this.idCliente);
+        System.out.println("Total de productos: " + this.totalProductos);
+        System.out.println("Subtotal: $" + this.subtotal);
+        System.out.println("Descuento aplicado: $" + this.descuento);
+        System.out.println("Total a pagar: $" + this.total);
+    }
+    @Override
+    public String toString() {
+        return "Cve Pedido: " + idPedido +
+                " - Fecha: " + fecha +
+                " - Hora: " + hora +
+                " - Cliente: " + idCliente;
+    }
 }

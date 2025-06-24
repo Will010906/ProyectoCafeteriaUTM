@@ -1,23 +1,28 @@
 package com.mycompany.cafeteriautm;
 
-/**
- *
- * @author alcan
- */
 public class Comida extends Producto {
 
-    //Zona de declaración de atributos:
+    // Atributos
     private int idComida;
     private String ingredientes;
     private String porcion;
     private boolean disponibilidad;
 
-    //Constructor
-    public Comida(String nombre, String categoria, float precio, short existencias, String ingredientes, String descripcion) {
-        //Herencia
-        super(nombre, (float) precio, categoria, existencias);
+    // Constructor
+    public Comida(String nombre, String categoria, float precio, short existencias, String ingredientes, String porcion) {
+        super(nombre, precio, categoria, existencias);
         this.ingredientes = ingredientes;
-        this.porcion = descripcion;
+        this.porcion = porcion;
+        this.disponibilidad = true; // Puedes inicializarlo en true por defecto
+    }
+
+    // Getters y Setters propios de Comida
+    public int getIdComida() {
+        return idComida;
+    }
+
+    public void setIdComida(int idComida) {
+        this.idComida = idComida;
     }
 
     public String getIngredientes() {
@@ -43,57 +48,22 @@ public class Comida extends Producto {
     public void setDisponibilidad(boolean disponibilidad) {
         this.disponibilidad = disponibilidad;
     }
-
-    public int getIdComida() {
-        return idComida;
+    @Override
+    public String toString() {
+        return getNombre() + " - " + porcion + " - $" + getPrecio();
     }
 
-    public void setIdComida(int idComida) {
-        this.idComida = idComida;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public float getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(float precio) {
-        this.precio = precio;
-    }
-
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
-
-    public short getExistencias() {
-        return existencias;
-    }
-
-    public void setExistencias(short existencias) {
-        this.existencias = existencias;
-    }
-
+    // Métodos para mostrar la información
     public void mostrarDatosComida() {
-        System.out.println("Nombre:" + this.getNombre()
-                + "- Precio: " + this.getPrecio()
-                + "- Ingredientes: " + this.getIngredientes()
-                + "- Porcion: " + this.getPorcion()
-                + "- Existencias: " + this.getExistencias());
+        System.out.println("Nombre: " + getNombre()
+                + " - Precio: " + getPrecio()
+                + " - Ingredientes: " + ingredientes
+                + " - Porción: " + porcion
+                + " - Existencias: " + getExistencias());
     }
 
     public void mostrarResumenDatosComida() {
-        System.out.println("Nombre:" + this.getNombre()
-                + "- Precio: " + this.getPrecio());
+        System.out.println("Nombre: " + getNombre()
+                + " - Precio: " + getPrecio());
     }
 }

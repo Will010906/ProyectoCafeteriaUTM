@@ -1,18 +1,14 @@
 package com.mycompany.cafeteriautm;
 
-/**
- *
- * @author alcan
- */
 public class Cliente {
 
-    //Zona de declaración de atributos:
+    // Atributos
     private int idCliente;
     private String nombre;
     private boolean beca;
     private float porcentaje;
 
-    //Constructor
+    // Constructor
     public Cliente(int idCliente, String nombre, boolean beca, float porcentaje) {
         this.idCliente = idCliente;
         this.nombre = nombre;
@@ -20,6 +16,7 @@ public class Cliente {
         this.porcentaje = porcentaje;
     }
 
+    // Getters y Setters
     public int getIdCliente() {
         return idCliente;
     }
@@ -52,11 +49,15 @@ public class Cliente {
         this.porcentaje = porcentaje;
     }
 
+    // Método para mostrar información del cliente
     public void mostrarDatosCliente() {
-        System.out.println("Cve" + this.idCliente
-                + "- Nombre:" + this.getNombre()
-                + "- Beca" + this.beca
-                + "- % beca:" + this.porcentaje);
+        System.out.println("Cve: " + idCliente
+                + " - Nombre: " + nombre
+                + " - Beca: " + beca
+                + " - % Beca: " + porcentaje);
     }
-
+    @Override
+    public String toString() {
+        return "ID: " + idCliente + " - Nombre: " + nombre + " - Beca: " + beca + " - % Beca: " + porcentaje;
+    }
 }
