@@ -1,16 +1,19 @@
 package com.mycompany.cafeteriautm;
+
 /**
  *
  * @author alcan
  */
-public class Comida extends Producto{
+public class Comida extends Producto {
+
     //Zona de declaración de atributos:
     private int idComida;
     private String ingredientes;
     private String porcion;
     private boolean disponibilidad;
+
     //Constructor
-    public Comida(String nombre, String categoria, float precio, short existencias, String ingredientes, String descripcion){
+    public Comida(String nombre, String categoria, float precio, short existencias, String ingredientes, String descripcion) {
         //Herencia
         super(nombre, (float) precio, categoria, existencias);
         this.ingredientes = ingredientes;
@@ -32,7 +35,6 @@ public class Comida extends Producto{
     public void setPorcion(String porcion) {
         this.porcion = porcion;
     }
-
 
     public boolean isDisponibilidad() {
         return disponibilidad;
@@ -81,15 +83,17 @@ public class Comida extends Producto{
     public void setExistencias(short existencias) {
         this.existencias = existencias;
     }
-    public void mostrarDatosComida(){
+
+    public void mostrarDatosComida() {
         System.out.println("Nombre:" + this.getNombre()
                 + "- Precio: " + this.getPrecio()
                 + "- Ingredientes: " + this.getIngredientes()
                 + "- Porcion: " + this.getPorcion()
                 + "- Existencias: " + this.getExistencias());
     }
-    public void mostrarResumenDatosComida(){
-        
-    }
-    }
 
+    public void mostrarResumenDatosComida() {
+        System.out.println("Nombre:" + this.getNombre()
+                + "- Precio: " + this.getPrecio());
+    }
+}

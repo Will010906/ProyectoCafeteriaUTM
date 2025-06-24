@@ -5,13 +5,20 @@ package com.mycompany.cafeteriautm;
  * @author alcan
  */
 public class Encargado {
-
-    public Encargado(int idEncargado, String nombre, String turno) {
-    }
-    private int idEncargado;
+  private int idEncargado;
     private String nombre;
     private String turno;
+
+    public Encargado(int idEncargado, String nombre, String turno) {
+        this.idEncargado = idEncargado;
+        this.nombre = nombre;
+        this.turno = turno;
+    }
     
+        
+  
+    
+        
 
     public int getIdEncargado() {
         return idEncargado;
@@ -37,8 +44,10 @@ public class Encargado {
         this.turno = turno;
     }
 
-    void mostrarDatosEmpleado() {
-        System.out.println("Cve" + this.getIdEncargado() + "- Nombre" + this.getNombre() + "- Turno:" + this.getTurno());
+   public void mostrarDatosEmpleado() {
+        System.out.println("Cve: " + this.getIdEncargado()
+                + "- Nombre: " + this.getNombre() 
+                + "- Turno:" + this.getTurno());
     }
     
 }

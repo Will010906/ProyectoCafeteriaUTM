@@ -1,4 +1,5 @@
 package com.mycompany.cafeteriautm;
+
 import java.util.ArrayList;
 
 /**
@@ -6,6 +7,7 @@ import java.util.ArrayList;
  * @author alcan
  */
 public class Pedido {
+
     //Zona de declaración de atributos:
     Pedido idPedido;
     String fecha;
@@ -15,13 +17,13 @@ public class Pedido {
     int totalProductos;
     float subtotal;
     float total;
-    
+
     //Declaración de ARRAYS
-    ArrayList<Comida>productosPedidosComida = new ArrayList<>();
-    ArrayList<Integer>productosCantidadPedidosComida = new ArrayList<>();
-    ArrayList<Bebida>productosPedidosBebida = new ArrayList<>();
-    ArrayList<Integer>productosCantidadPedidosBebida = new ArrayList<>();
-    
+    ArrayList<Comida> productosPedidosComida = new ArrayList<>();
+    ArrayList<Integer> productosCantidadPedidosComida = new ArrayList<>();
+    ArrayList<Bebida> productosPedidosBebida = new ArrayList<>();
+    ArrayList<Integer> productosCantidadPedidosBebida = new ArrayList<>();
+
     //Constructor
     public Pedido(Pedido idPedido, String fecha, String hora, Cliente idCliente, int totalProductos, float subtotal) {
         this.idPedido = idPedido;
@@ -31,15 +33,16 @@ public class Pedido {
         this.totalProductos = totalProductos;
         this.subtotal = subtotal;
     }
-       public Pedido() {
+
+    public Pedido() {
         this.idPedido = null;
         this.fecha = "";
         this.hora = "";
         this.idCliente = null;
         this.totalProductos = 0;
         this.subtotal = 0;
-       }
-       
+    }
+
     public Pedido getIdPedido() {
         return idPedido;
     }
@@ -103,16 +106,19 @@ public class Pedido {
     public void setTotal(float total) {
         this.total = total;
     }
-
-    void mostrarPedidoFinal() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void mostrarPedido() {
+                      System.out.println("Cve" + this.idPedido 
+                + "- Fecha:" + this.fecha
+                + "- Hora: " + this.hora
+                + "- Cliente: " + this.idCliente.getNombre());
     }
-    
-    
-    
-  
+    public void mostrarPedidoFinal() {
+        System.out.println("Cve: " + this.idPedido
+                + "- Fecha:" + this.fecha
+                + "- Hora: " + this.hora
+                + "- Cliente: " + this.idCliente.getNombre()
+                + "- No. productos:" + this.totalProductos
+                + "- total venta: " + this.getSubtotal());
     }
 
-    
-    
-
+}

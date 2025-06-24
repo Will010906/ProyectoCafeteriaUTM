@@ -1,11 +1,11 @@
 package com.mycompany.cafeteriautm;
-import java.util.ArrayList;
 
 /**
  *
  * @author alcan
  */
 public class Venta {
+
     //Zona de declaración de atributos:
     private int idVenta;
     private String fecha;
@@ -15,10 +15,10 @@ public class Venta {
     private float descuentoBeca;
     private Cliente idCliente;
     private Encargado idEncargado;
+    private Pedido pedido;
     //Declaración de ARRAY:
-    ArrayList<Producto>producto = new ArrayList<>();
 
-    public Venta(int idVenta, String fecha, String hora, float total, float subtotal, float descuentoBeca, Cliente idCliente, Encargado idEncargado) {
+    public Venta(float total, Cliente idCliente, Pedido pedido) {
         this.idVenta = idVenta;
         this.fecha = fecha;
         this.hora = hora;
@@ -27,6 +27,7 @@ public class Venta {
         this.descuentoBeca = descuentoBeca;
         this.idCliente = idCliente;
         this.idEncargado = idEncargado;
+        this.pedido = pedido;
     }
 
     public int getIdVenta() {
@@ -93,12 +94,22 @@ public class Venta {
         this.idEncargado = idEncargado;
     }
 
-    public static void main(String[] args) {
+    public Pedido getPedido() {
+        return pedido;
     }
 
-}
-    
-    
-    
-    
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
+    }
 
+    public void mostrarVenta() {
+        System.out.println("Cve: " + this.idVenta
+                + "- Encargado de la venta: " + this.idEncargado.getNombre()
+                + "- Nombre: " + this.idCliente.getNombre()
+                + "- Fecha: " + this.fecha
+                + "- Hora:" + this.hora
+                + "- Descuento Beca: " + this.descuentoBeca
+                + "- Subtotal: " + this.subtotal
+                + "- Total: " + this.total);     
+    }
+}

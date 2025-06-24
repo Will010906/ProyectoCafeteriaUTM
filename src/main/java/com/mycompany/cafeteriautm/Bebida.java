@@ -5,20 +5,21 @@ package com.mycompany.cafeteriautm;
  * @author alcan
  */
 public class Bebida extends Producto {
+
     //Zona de declaración de atributos:
     private int idBebida;
     private float volumen;
     private String sabor;
     private String temperatura;
-    
-    public Bebida(String nombre, String categoria, float precio, short existencias, float volumen, String temperatura, String sabor){
+
+    public Bebida(String nombre, String categoria, float precio, short existencias, float volumen, String temperatura, String sabor) {
         //Herencia
         super(nombre, (float) precio, categoria, existencias);
-        this.volumen= volumen;
+        this.volumen = volumen;
         this.sabor = sabor;
         this.temperatura = temperatura;
     }
-    
+
     public float getVolumen() {
         return volumen;
     }
@@ -82,13 +83,19 @@ public class Bebida extends Producto {
     public void setExistencias(short existencias) {
         this.existencias = existencias;
     }
-    public void mostrarDatosBebida(){
+
+    public void mostrarDatosBebida() {
         System.out.println("Nombre:" + this.getNombre()
                 + "- Precio: " + this.getPrecio()
                 + "- Sabor: " + this.getSabor()
                 + "- Volumen: " + this.getVolumen()
-                + "- Temperatura: "+ this.getTemperatura()
+                + "- Temperatura: " + this.getTemperatura()
                 + "- Existencias: " + this.getExistencias());
     }
-    
+
+    public void mostrarResumenDatosbebida() {
+        System.out.println("Nombre:" + this.getNombre()
+                + "- Precio: " + this.getPrecio()
+                + "- Sabor: " + this.getSabor());
+    }
 }

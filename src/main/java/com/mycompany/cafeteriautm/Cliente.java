@@ -52,7 +52,7 @@ public class Cliente {
         this.porcentaje = porcentaje;
     }
 
-    void mostrarDatosCliente() {
+    public void mostrarDatosCliente() {
         System.out.println("Cve" + this.idCliente
                 + "- Nombre:" + this.getNombre()
                 + "- Beca" + this.beca

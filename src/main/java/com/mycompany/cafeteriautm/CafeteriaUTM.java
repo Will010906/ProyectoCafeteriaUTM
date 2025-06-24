@@ -29,25 +29,22 @@ public class CafeteriaUTM {
     }
 //Construción de los objetos empleados
 
-    public void construirObjetosEmpleados() {
+    public void construirObjetosEncargado() {
         Encargado empleado1 = new Encargado(1, "Saul", "Matutino");
         Encargado empleado2 = new Encargado(2, "Andrea", "Vespertino");
+
         arregloEmpleados.add(empleado1);
         arregloEmpleados.add(empleado2);
     }
 
-    public void mostrarObjetosEmpleados() {
+    public void mostrarObjetosEncargado() {
         for (int i = 0; i < arregloEmpleados.size(); i++) {
             arregloEmpleados.get(i).mostrarDatosEmpleado();
             arregloEmpleados.get(i).getTurno();
         }
     }
-    //Construcción del objeto ventas
-    objVentas = new Ventas;
-    //Registro de los datos del objeto ventas
-    objVentas.registraVentas()
-//Construccion de los objetos clientes
 
+    //Construccion de los objetos clientes
     public void construirObjetosClientes() {
         Cliente cliente1 = new Cliente(1, "Aime", true, 50);
         Cliente cliente2 = new Cliente(2, "Juan", true, 50);
@@ -76,7 +73,7 @@ public class CafeteriaUTM {
 
     public void consultarProductosComida() {
         for (int i = 0; i < arregloMenuComida.size(); i++) {
-            arregloMenuComida.get(i);
+            arregloMenuComida.get(i).mostrarDatosComida();
         }
     }
     //Construcción de los objetos producto bebida
@@ -93,7 +90,7 @@ public class CafeteriaUTM {
 
     public void consultarProductosBebida() {
         for (int i = 0; i < arregloMenuBebida.size(); i++) {
-            arregloMenuBebida.get(i);
+            arregloMenuBebida.get(i).mostrarDatosBebida();
         }
     }
 //Construccion del menu de la cafeteriaUTM
@@ -101,7 +98,7 @@ public class CafeteriaUTM {
     public void mostrarMenuCafeteriaUTM() {
         //Declaración de la variable "opcion"
         byte opcion;
-        construirObjetosEmpleados();
+        construirObjetosEncargado();
         construirObjetosClientes();
         registrarProductosComida();
         registrarProductosBebida();
@@ -120,8 +117,8 @@ public class CafeteriaUTM {
             switch (opcion) {
                 case 1:
                     System.out.println("------------------------------- Lista de Empleados -------------------------------");
-                    this.construirObjetosEmpleados();
-                    this.mostrarObjetosEmpleados();
+                    this.construirObjetosEncargado();
+                    this.mostrarObjetosEncargado();
                     System.out.println("------------------------------- Lista de Clientes -------------------------------");
                     this.construirObjetosClientes();
                     this.mostrarObjetosCliente();
@@ -133,6 +130,17 @@ public class CafeteriaUTM {
                     this.consultarProductosBebida();
                     break;
                 case 2:
+                    System.out.println("Realizar pedido y venta");
+                    this.registrarPedidoCliente();
+                    break;
+                case 3:
+                    System.out.println("Realizar reporte de ventas");
+                    this.generarReporteVenta(numPedidoActual);
+                    break;
+                case 4:
+                    System.out.println("Gracias por visitar cafeteria UTM, hasta luego.!!");
+                    break;
+
             }
         } while (opcion != 4);
     }
@@ -188,7 +196,7 @@ public class CafeteriaUTM {
         pedido.setHora(hora);
         pedido.setIdCliente(cliente);
         arregloPedido.add(pedido);
-        numPedido = (byte) (arregloPedido.size() - 1);
+        idPedido = (byte) (arregloPedido.size() - 1);
 
 //Ingresar comidas
         System.out.println("------------------------------- Menu de Comidas -------------------------------");
@@ -307,22 +315,55 @@ public class CafeteriaUTM {
 
         //Actualizar y mostrar pedido
         pedido.setTotalProductos((short) totalItems);
-        pedido.setSubtotal((float) cantidad);
-        pedido.setDescuento((float) subtotal);
+        pedido.setSubtotal((float) subtotal);
+        pedido.setDescuento((float) descuento);
         pedido.setTotal((float) totalPagar);
         pedido.mostrarPedidoFinal();
 
         //Confirmación del pago
         teclado.nextLine();
         System.out.println("Desea pagar el pedido? (si/no): ");
-        respuesta =teclado.nextLine().trim().toLowerCase();
+        respuesta = teclado.nextLine().trim().toLowerCase();
         if (respuesta.equals("si")) {
-            registrarVentaProducto(numPedidoActual);  
+               Venta venta = new Venta(pedido.getTotal(), pedido.getIdCliente(), pedido.getIdPedido());
+    arregloVenta.add(venta);
+    generarReporteVenta();
+}
+idPedido++;
+
+    }
+
+    private Cliente buscarClientePorId(short idCliente) {
+        for (Cliente indice : arregloCliente) {
+            if (indice.getIdCliente() == idCliente) {
+                return indice;
+            }
         }
+        return null;
     }
-    numPedido
+    
 
+    private void generarReporteVenta() {
+    System.out.println("------------------------------- Reporte de Ventas -------------------------------");
+    System.out.println("Total de ventas: " + arregloVenta.size());
+    float total = 0;
+
+    for (Venta ventas : arregloVenta) {
+        ventas.mostrarVenta();
+        total += ventas.getTotal();
     }
+    System.out.println("Total acumulado de ventas: $" + total);
+}
 
-
+       
+                
+        
+      
+        
+        
+        
+     
+        }
+    
+}
 }
